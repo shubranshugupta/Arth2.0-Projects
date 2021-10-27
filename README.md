@@ -6,9 +6,9 @@ This Repository contains all the project given in Arth 2.0
 
 <br>
 
-## 1. [Project 1](Project1)
+### [1. Project 1](Project1)
 
-### Description 📄
+#### Description 📄
 
 📌 Create Python Menu based program, integrate it with
 espeak-ng and keep adding options as we learn new tools and
