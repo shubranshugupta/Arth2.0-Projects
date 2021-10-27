@@ -1,0 +1,21 @@
+=========================================================
+
+                                  Welcome!!
+                                    🙏🙏
+                              Arth 2.0 Project 1
+
+  Description 📝: Create Python Menu based program, integrate it with espeak-ng and 
+  keep adding options as we learn new tools and technologies.
+
+  Created by:- Shubhranshu Gupta
+
+  Source code: https://github.com/shubranshugupta/Arth2.0-Project/tree/main/Project1
+
+  Inspire form Aryanshu Kumar Project
+  https://discord.com/channels/885473095773732884/889090593840562216
+  /895362374456995860
+
+                                    Thank You
+                                 Made With Love ❤️
+    
+=========================================================
