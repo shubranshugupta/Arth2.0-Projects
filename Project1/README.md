@@ -14,7 +14,7 @@ technologies.
 
 <span style="color:red"><b>Note:</b></span>
 
-This program work for linux only.
+This program work for Red Hat Linux based distributions only.
 
 ---
 
@@ -31,7 +31,7 @@ git clone https://github.com/shubranshugupta/Arth2.0-Project.git
 
 2. Change Directory to Project1
 ```bash
-cd Project1
+cd Arth2.0-Projects/Project1
 ```
 
 3. Run the project1.py file.

@@ -2,7 +2,6 @@ import os
 from utils.common import show_option, speak, run_cmd
 from utils.common import check_prog, insatll_cmd, ask_install
 
-SHELL_SCRIPT_PATH = os.path.join(".", "shell_script", "fun_command.sh")
 SAVED_FILE_PATH = os.path.join(".", "saved_file", "funcmd.txt")
 COWSAY_SHAPE = ["blowfish", "bud-frogs", "bunny", "cheese", "cower", "dragon",
                 "dragon-and-cow", "elephant", "elephant-in-snake", "eyes", 
@@ -85,7 +84,7 @@ class FunCommand:
     def sl(self):
         if not check_prog("sl"):
             if ask_install("sl"):
-                insatll_cmd(SHELL_SCRIPT_PATH, "sl")
+                insatll_cmd("sl")
             else:
                 return False
         cmd = ["gnome-terminal", "-e",  "bash -c sl"]
@@ -94,7 +93,7 @@ class FunCommand:
     def fortune(self):
         if not check_prog("fortune"):
             if ask_install("fortune"):
-                insatll_cmd(SHELL_SCRIPT_PATH, "fortune")
+                insatll_cmd("fortune")
             else:
                 return False
         cmd = 'zenity --info --text="$(fortune)" --height=300 --width=300'
@@ -103,7 +102,7 @@ class FunCommand:
     def cmatrix(self):
         if not check_prog("cmatrix"):
             if ask_install("cmatrix"):
-                insatll_cmd(SHELL_SCRIPT_PATH, "cmatrix")
+                insatll_cmd("cmatrix")
             else:
                 return None
         cmd = ["gnome-terminal", "-e",  "bash -c cmatrix"]
@@ -112,7 +111,7 @@ class FunCommand:
     def cowsay(self):
         if not check_prog("cowsay"):
             if ask_install("cowsay"):
-                insatll_cmd(SHELL_SCRIPT_PATH, "cowsay")
+                insatll_cmd("cowsay")
             else:
                 return None
         cowsay_main()
@@ -120,7 +119,7 @@ class FunCommand:
     def asciiquarium(self):
         if not check_prog("asciiquarium"):
             if ask_install("asciiquarium"):
-                insatll_cmd(SHELL_SCRIPT_PATH, "asciiquarium")
+                insatll_cmd("asciiquarium")
             else:
                 return None
         cmd = ["gnome-terminal", "-e", "bash -c asciiquarium"]

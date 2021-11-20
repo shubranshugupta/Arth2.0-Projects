@@ -1,5 +1,8 @@
 from subprocess import run
 import subprocess
+import os
+
+SHELL_SCRIPT_PATH = os.path.join(".", "shell_script", "program_install.sh")
 
 def speak(msg):
     cmd = ["espeak-ng", f"{msg}"]
@@ -29,8 +32,8 @@ def check_prog(prog):
         return True
     return False
 
-def insatll_cmd(script_path, prog):
-    cmd = f"{script_path} {prog} | zenity --progress --title Project 1 --text='Installing {prog}'"
+def insatll_cmd(prog):
+    cmd = f"{SHELL_SCRIPT_PATH} {prog} | zenity --progress --title Project 1 --text='Installing {prog}'"
     returncode, _ = run_cmd(cmd, shell=True)
     if returncode:
         cmd = ["zenity", "--error", "--text=An error occure during installation"]
