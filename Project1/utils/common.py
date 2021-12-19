@@ -33,11 +33,17 @@ def check_prog(prog):
     return False
 
 def insatll_cmd(prog):
-    cmd = f"{SHELL_SCRIPT_PATH} {prog} | zenity --progress --title Project 1 --text='Installing {prog}'"
-    returncode, _ = run_cmd(cmd, shell=True)
-    if returncode:
-        cmd = ["zenity", "--error", "--text=An error occure during installation"]
-        run_cmd(cmd)
+    if prog == "system":
+        cmd = f"{SHELL_SCRIPT_PATH} {prog}"
+        returncode, _ = run_cmd(cmd, shell=True)
+        if returncode:
+            exit
+    else:
+        cmd = f"{SHELL_SCRIPT_PATH} {prog} | zenity --progress --title Project 1 --text='Installing {prog}'"
+        returncode, _ = run_cmd(cmd, shell=True)
+        if returncode:
+            cmd = ["zenity", "--error", "--text=An error occure during installation"]
+            run_cmd(cmd)
 
 def ask_install(prog):
     speak(f"Do you want to install {prog}")

@@ -172,7 +172,7 @@ class eSpeakClass():
                 "--auto-kill", "--auto-close"]
         
         if self.file is None:
-            cmd1.append(f"{self.text}")
+            cmd1.append(f"'{self.text}'")
         else:
             cmd1.append(f"-f{self.file}")
         

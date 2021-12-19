@@ -1,5 +1,5 @@
 import os
-from utils.common import run_cmd, show_option
+from utils.common import run_cmd, show_option, insatll_cmd
 from utils import date_cal, terminal, fun_command
 from utils import firefox, espeak
 
@@ -16,6 +16,10 @@ __status__ = "Learning"
 ENTRY_TEXT = os.path.join(".", "saved_file", "main_menu.txt")
 
 def main():
+
+    print("Checking system compability..")
+    insatll_cmd("system")
+    print("Done!!")
 
     cmd = ["espeak-ng", "-a200", "-s130", "Welcome to Menu Based Project."]
     run_cmd(cmd)

@@ -1,18 +1,57 @@
 #! /usr/bin/bash
 
-echo $1
+Install(){
+    LOOP=1
 
-if [[ $1 == "sl" ]]
-then
-    sudo yum install sl -y
+    while (( $LOOP == 1 ))
+    do
+        USER=$(whoami)
+        if [[ "$USER" != "root" && "$2" != "system" ]]
+        then
+            PASSWD="$(zenity --password --title=Authentication)\n"
+        else
+            PASSWD="none"
+        fi
 
-elif [[ $1 == "fortune" ]]
-then
-    sudo yum install fortune-mod -y
+        if [[ $PASSWD == "none" ]]
+        then 
+            sudo yum install $1 -y
+        else
+            echo -e $PASSWD | sudo -S yum install $1 -y
+        fi
+        LOOP=$?
+    done
+}
 
-elif [[ $1 == "cmatrix" ]]
+CMD=$1
+
+if [[ $CMD == "system" ]]
 then
-    sudo yum install perl cmake ncurses ncurses-devel git -y
+    if ! which zenity
+    then
+        Install zenity $CMD
+    fi
+    if ! which espeak-ng
+    then
+        Install espeak-ng $CMD
+    fi
+
+elif [[ $CMD == "sl" ]]
+then
+    Install $CMD
+
+elif [[ $CMD == "fortune" ]]
+then
+    Install fortune-mod
+
+elif [[ $CMD == "cowsay" ]]
+then
+    Install $CMD
+
+elif [[ $CMD == "cmatrix" ]]
+then
+    Install perl
+    sudo yum install cmake ncurses ncurses-devel git -y
     cd /tmp
     wget https://www.cpan.org/modules/by-module/Curses/Curses-1.38.tar.gz
     tar -zxvf Curses-1.38.tar.gz
@@ -26,16 +65,12 @@ then
     cmake ..
     sudo make && make install
     cd /tmp
-    rm -f Curses-1.38.tar.gz 
-    rm -f -r Curses-1.38 cmatrix
+    sudo rm -f Curses-1.38.tar.gz 
+    sudo rm -f -r Curses-1.38 cmatrix
 
-elif [[ $1 == "cowsay" ]]
+elif [[ $CMD == "asciiquarium" ]]
 then
-    sudo yum install cowsay -y
-
-elif [[ $1 == "asciiquarium" ]]
-then
-    sudo yum install perl
+    Install perl
     cd /tmp
     wget https://www.cpan.org/modules/by-module/Curses/Curses-1.38.tar.gz
     tar -zxvf Curses-1.38.tar.gz
@@ -53,10 +88,9 @@ then
     sudo cp asciiquarium /usr/local/bin/
     sudo chmod 0755 /usr/local/bin/asciiquarium
     cd /tmp
-    rm -f Curses-1.38.tar.gz Term-Animation-2.6.tar.gz asciiquarium.tar.gz
-    rm -f -r Curses-1.38 Term-Animation-2.6 asciiquarium_1.1
+    sudo rm -f Curses-1.38.tar.gz Term-Animation-2.6.tar.gz asciiquarium.tar.gz
+    sudo rm -f -r Curses-1.38 Term-Animation-2.6 asciiquarium_1.1
 
 else
-    echo none
-
+    echo "hi"
 fi

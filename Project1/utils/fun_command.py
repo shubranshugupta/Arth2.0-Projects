@@ -26,6 +26,7 @@ class Cowsay:
         returncode, stdout = run_cmd(cmd)
         if not returncode:
             self.shape = stdout.replace("\n", "")
+            print(self.shape)
     
     def save_file(self):
         if self.text != None:
@@ -87,6 +88,7 @@ class FunCommand:
                 insatll_cmd("sl")
             else:
                 return False
+        speak("Running sl command.")
         cmd = ["gnome-terminal", "-e",  "bash -c sl"]
         run_cmd(cmd)
     
@@ -96,6 +98,7 @@ class FunCommand:
                 insatll_cmd("fortune")
             else:
                 return False
+        speak("Running fortune command.")
         cmd = 'zenity --info --text="$(fortune)" --height=300 --width=300'
         run_cmd(cmd, shell=True)
     
@@ -105,6 +108,7 @@ class FunCommand:
                 insatll_cmd("cmatrix")
             else:
                 return None
+        speak("Running cmatrix command.")
         cmd = ["gnome-terminal", "-e",  "bash -c cmatrix"]
         run_cmd(cmd)
     
@@ -122,6 +126,7 @@ class FunCommand:
                 insatll_cmd("asciiquarium")
             else:
                 return None
+        speak("Running asciiquarium command.")
         cmd = ["gnome-terminal", "-e", "bash -c asciiquarium"]
         run_cmd(cmd)
 
@@ -140,18 +145,14 @@ def main():
             break
 
         if opt == 1:
-            speak("Running sl command.")
             obj.sl()
         elif opt == 2:
-            speak("Running fortune command.")
             obj.fortune()
         elif opt == 3:
-            speak("Running cmatrix command.")
             obj.cmatrix()
         elif opt == 4:
             obj.cowsay()
         elif opt == 5:
-            speak("Running asciiquarium command.")
             obj.asciiquarium()
         else:
             LOOP = False
